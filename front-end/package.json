@@ -37,5 +37,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://lamp.cse.fau.edu/"
+  "proxy": "https://lamp.cse.fau.edu/",
+  "homepage": "https://lamp.cse.fau.edu/~cen4010_fa21_g11/prototype"
 }
