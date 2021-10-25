@@ -23,10 +23,20 @@ export default function SearchBar() {
     }
   }
 
+  function GetResults() {
+    if (!searchResults || (Array.isArray(searchResults) && !searchResults.length)) {
+      return <h2>Nothing to see here</h2>
+    }
+    return searchResults.map((item, index) => {
+      return <div key={index}><h2>{item}</h2></div>
+    })
+  }
+
 
   return (
     <div className="center" style={{paddingTop: 100}}>
-      <h1>Search for users</h1>
+      <h1>Search for usernames</h1>
+      <h3>Ex: J or just press search with empty data</h3>
       <TextField value={searchTerm} variant="outlined" label="Find Users" onChange={e => changeSearchTerm(e.target.value)} />
       <Button variant="contained" onClick={() => GetSearchResults()} 
         style={{marginLeft: 35, minWidth: 100, minHeight: 53, backgroundColor: "#ababab"}}
@@ -34,9 +44,7 @@ export default function SearchBar() {
         Search
       </Button>
       <div>
-        {searchResults && searchResults.map((item, index) => {
-          return <div key={index}><h2>{item}</h2></div>
-        })}
+        {GetResults()}
       </div>
     </div>
   );

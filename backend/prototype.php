@@ -6,12 +6,14 @@
     exit("Invalid data");
   }
 
-  $searchName = htmlspecialchars($_GET['request']);
   $conn = new mysqli($server, $username, $pwd, $db);
 
   if ($conn->connect_error) {
     die("Unexpected error");
   }
+
+  $searchName = htmlspecialchars($_GET['request']);
+  $searchName = $conn->real_escape_string($searchName);
 
   $query = "SELECT * FROM " . $dbTable . " WHERE username LIKE '" . $searchName . "%'";
   $res = $conn->query($query); 
